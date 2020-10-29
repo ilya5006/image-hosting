@@ -2,39 +2,25 @@
 
 namespace App;
 
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASSWORD', '');
+define('DB_NAME', 'coursework');
+
 class Database
 {
-    private static $connectionProperties;
-
     private static $connection;
 
     private static function initConnection()
     {
-        if (! static::$connectionProperties['host']) {
-            throw new \Exception('Укажите адрес хоста базы данных');
-        }
-
-        if (! static::$connectionProperties['login']) {
-            throw new \Exception('Укажите логин базы данных');
-        }
-
-        if (! static::$connectionProperties['password']) {
-            throw new \Exception('Укажите пароль базы данных');
-        }
-
-        if (! static::$connectionProperties['dbname']) {
-            throw new \Exception('Укажите имя базы данных');
-        }
-
-        static::$connection = new \mysqli(
-            static::$connectionProperties['host'],
-            static::$connectionProperties['login'],
-            static::$connectionProperties['password'],
-            static::$connectionProperties['dbname']
+        static::$connection = new \PDO(
+            'mysql:dbname=' . DB_NAME . ';host=' . DB_HOST,
+            DB_USER,
+            DB_PASSWORD
         );
     }
 
-    public static function getConnection()
+    private static function getConnection()
     {
         if (empty(static::$connection)) {
             static::initConnection();
@@ -43,15 +29,69 @@ class Database
         return static::$connection;
     }
 
-    public static function setConnectionProperties(
-        string $host,
-        string $login, 
-        string $password,
-        string $dbname
-    ) {
-        static::$connectionProperties['host'] = $host;
-        static::$connectionProperties['login'] = $login;
-        static::$connectionProperties['password'] = $password;
-        static::$connectionProperties['dbname'] = $dbname;
+    
+    public static function select(string $table, string $selector = '*', string $conditionTemplate = '', array $embeddedData)
+    {
+        $connection = static::getConnection();
+
+        $query = 'SELECT ' . $selector . ' FROM ' . $table;
+        $query .= ($conditionTemplate != '') ? (' WHERE ' . $conditionTemplate) : '';
+
+        $sth = $connection->prepare($query);
+
+        foreach ($embeddedData as $data) {
+            $sth->bindParam(...$data);
+        }
+
+        $sth->execute();
+
+        return $sth->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public static function insert(string $table, string $valuesTemplate, array $embeddedData)
+    {
+        $connection = static::getConnection();
+
+        $query = 'INSERT INTO ' . $table . ' VALUES (' . $valuesTemplate . ')';
+
+        $sth = $connection->prepare($query);
+
+        foreach ($embeddedData as $data) {
+            $sth->bindParam(...$data);
+        }
+
+        $sth->execute();
+    }
+
+    public static function update(string $table, string $settersTemplate, string $conditionTemplate = '', array $embeddedData)
+    {
+        $connection = static::getConnection();
+
+        $query = 'UPDATE ' . $table . ' SET ' . $settersTemplate;
+        $query .= ($conditionTemplate != '') ? (' WHERE ' . $conditionTemplate) : '';
+
+        $sth = $connection->prepare($query);
+
+        foreach ($embeddedData as $data) {
+            $sth->bindParam(...$data);
+        }
+
+        $sth->execute();
+    }
+
+    public static function delete(string $table, string $conditionTemplate = '', array $embeddedData)
+    {
+        $connection = static::getConnection();
+
+        $query = 'DELETE FROM ' . $table;
+        $query .= ($conditionTemplate != '') ? (' WHERE ' . $conditionTemplate) : '';
+
+        $sth = $connection->prepare($query);
+
+        foreach ($embeddedData as $data) {
+            $sth->bindParam(...$data);
+        }
+
+        $sth->execute();
     }
 }

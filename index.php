@@ -10,9 +10,10 @@ require_once __DIR__ . '/model/Functions/getStyles.php';
 $router = new \App\Routing\Router(new \App\Routing\Request());
 
 $router->get('/', function() {
-    if (empty($_SESSION['id_user'])) {
-        header('Location: /login');
-    }
+
+    // if (empty($_SESSION['id_user'])) {
+    //     header('Location: /login');
+    // }
 });
 
 $router->get('/login', function() {

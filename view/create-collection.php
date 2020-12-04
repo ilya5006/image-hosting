@@ -1,3 +1,9 @@
+<?php
+if (empty($_SESSION['username'])) {
+    header('Location: /signin');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +13,10 @@
 </head>
 <body>
     <?php
-    view('header');
+    include __DIR__ . '/header.php';
     ?>
 
-    <form action="/create-collection" method="POST">
+    <form action="/model/create-collection.php" method="POST">
         <input type="text" name="name" placeholder="Имя коллекции">
         <input type="text" name="description" placeholder="Описание коллекции">
         <input type="submit" value="Создать">

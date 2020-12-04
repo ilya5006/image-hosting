@@ -2,93 +2,39 @@
 
 session_start();
 
-require_once __DIR__ . '/model/Functions/autoload.php';
-require_once __DIR__ . '/model/Functions/view.php';
-require_once __DIR__ . '/model/Functions/getScripts.php';
-require_once __DIR__ . '/model/Functions/getStyles.php';
-require_once __DIR__ . '/model/Functions/getCollections.php';
+if (empty($_SESSION['username'])) {
+    header('Location: /signin');
+}
+?>
 
-$router = new \App\Routing\Router(new \App\Routing\Request());
-
-$router->get('/', function() {
-
-    if (empty($_SESSION['username'])) {
-        header('Location: /signin');
-    }
-
-    $collections = getCollections($_SESSION['username']);
-
-    var_dump($collections);
-
-    view('index');
-});
-
-$router->get('/create-collection', function() {
-    if (empty($_SESSION['username'])) {
-        header('Location: /signin');
-    }
-
-    view('create-collection');
-});
-
-$router->get('/signin', function() {
-    view('signin');
-});
-
-$router->get('/signup', function() {
-    view('signup');
-});
-
-$router->get('/logout', function() {
-    session_destroy();
-
-    header('Location: /');
-});
-
-$router->post('/signup', function($request) {
-    $body = $request->getBody();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фотоальбом</title>
+</head>
+<body>
+    <?php
+        include __DIR__ . '/view/header.php';
+    ?>
     
-    $login = $body['login'];
-    $password = $body['password'];
-    $username = $body['username'];
+    <p>Добро пожаловать, <?=$_SESSION['username']?></p>
 
-    \App\Database::insert(
-        'users',
-        'null, :name, :login, :password', 
-        [
-            [':name', $username],
-            [':login', $login],
-            [':password', password_hash($password, PASSWORD_DEFAULT)]
-        ]
-    );
+    <p>Ваши коллекции:</p>
 
-    $_SESSION['username'] = $username;
-    $_SESSION['login'] = $login;
-    header('Location: /');
-});
-
-$router->post('/signin', function($request) {
-    $body = $request->getBody();
+    <div class="collections">
+        <?php
+        if (isset($collections)):
+        ?>
+        <?php
+        else:
+        ?>
+        <p>У вас нет коллекций</p>
+        <?php
+        endif;
+        ?>
+    </div>
     
-    $login = $body['login'];
-    $password = $body['password'];
-
-    $userInfo = \App\Database::select(
-        'users',
-        'password, name',
-        'login = :login',
-        [
-            [':login', $login]
-        ]
-    )[0];
-
-    if (! password_verify($password, $userInfo['password'])) {
-        header('Location: /signin?error=Неверный+логин+или+пароль');
-        
-        die();
-    }
-
-    $_SESSION['username'] = $userInfo['name'];
-    $_SESSION['login'] = $login;
-    header('Location: /');
-});
+</body>
+</html>

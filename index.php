@@ -3,7 +3,7 @@
 session_start();
 
 if (empty($_SESSION['username'])) {
-    header('Location: /signin');
+    header('Location: /signin.php');
 }
 ?>
 
@@ -16,25 +16,7 @@ if (empty($_SESSION['username'])) {
 </head>
 <body>
     <?php
-        include __DIR__ . '/view/header.php';
+        include __DIR__ . '/view/index.php';
     ?>
-    
-    <p>Добро пожаловать, <?=$_SESSION['username']?></p>
-
-    <p>Ваши коллекции:</p>
-
-    <div class="collections">
-        <?php
-        if (isset($collections)):
-        ?>
-        <?php
-        else:
-        ?>
-        <p>У вас нет коллекций</p>
-        <?php
-        endif;
-        ?>
-    </div>
-    
 </body>
 </html>

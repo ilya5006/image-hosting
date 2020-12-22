@@ -1,4 +1,19 @@
 * {
     margin: 0px;
     padding: 0px;
+    font-family: 'Merriweather', serif;
+}
+
+
+html, body {
+    height: 100%;
+}
+
+
+header {
+    background-color: #00C1DB;
+}
+
+body {
+    background-color: black;
 }

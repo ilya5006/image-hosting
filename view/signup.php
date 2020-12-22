@@ -1,9 +1,12 @@
 <form method="POST" action="/model/signup.php">
-    <input type="text" name="login" placeholder="Логин">
-    <input type="text" name="username" placeholder="Имя">
-    <input type="text" name="password" placeholder="Пароль">
-    <input type="text" name="password-repeat" placeholder="Повторите пароль">
+    <p>Введите логин:</p>
+    <input type="text" name="login">
+    <p>Введите пароль:</p>
+    <input type="text" name="password">
+    <p>Повторите пароль:</p>
+    <input type="text" name="password-repeat">
     <input type="submit" value="Зарегистрироваться">
-</form>
 
-<a href="/view/signin.php">Войти</a>
+    <p>Уже имеется аккаунт?<a href="/signin.php">Войти</a></p>
+
+</form>

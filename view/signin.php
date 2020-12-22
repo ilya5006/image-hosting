@@ -1,7 +1,9 @@
 <form method="POST" action="/model/signup.php">
-    <input type="text" name="login" placeholder="Логин">
-    <input type="text" name="password" placeholder="Пароль">
+    <p>Введите логин:</p>
+    <input type="text" id="login" name="login">
+    <p>Введите пароль:</p>
+    <input type="text" id="password" name="password">
     <input type="submit" value="Войти">
-</form>
 
-<a href="/signup.php">Зарегистрироваться</a>
+    <p>Нет аккаунта? <a href="/signup.php">Зарегистрироваться</a></p>
+</form>

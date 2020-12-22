@@ -1,0 +1,49 @@
+p {
+    color: #FFFFFF;
+    font-size: 25px;
+
+    margin-top: 10px;
+
+    text-align: center;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body a {
+    text-decoration: none;
+    color: #7392FF;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    border: 0px;
+    padding: 20px;
+}
+
+input[type="text"] {
+    background-color: #9D9D9D;
+
+    margin-top: 5px;
+
+    font-size: 20px;
+}
+
+input[type="submit"] {
+    background-color: #29C55E;
+    text-transform: uppercase;
+    color: #FFFFFF;
+
+    cursor: pointer;
+
+    margin-top: 25px;
+
+    font-size: 30px;
+}

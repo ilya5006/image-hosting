@@ -1,4 +1,4 @@
-<form method="POST" action="/model/signup.php">
+<form method="POST" action="/model/signin.php">
     <p>Введите логин:</p>
     <input type="text" id="login" name="login">
     <p>Введите пароль:</p>

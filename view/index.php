@@ -1,6 +1,3 @@
-<?php
-    include __DIR__ . '/header.php';
-?>
 
 <p>Добро пожаловать, <?=$_SESSION['username']?></p>
 

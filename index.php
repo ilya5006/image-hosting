@@ -2,7 +2,7 @@
 
 session_start();
 
-if (empty($_SESSION['username'])) {
+if (empty($_SESSION['id_user'])) {
     header('Location: /signin.php');
 }
 ?>
@@ -17,9 +17,13 @@ if (empty($_SESSION['username'])) {
     
     <link rel="stylesheet" href="/view/css/style.css">
 
-    <title>Фотоальбом</title>
+    <title>Главная страница</title>
 </head>
 <body>
+    <?php
+        include __DIR__ . '/header.php';
+    ?>
+
     <?php
         include __DIR__ . '/view/index.php';
     ?>

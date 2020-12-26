@@ -9,7 +9,7 @@ $password = $_POST['password'];
 
 $userInfo = \App\Database::select(
     'users',
-    'password, name',
+    'password, id',
     'login = :login',
     [
         [':login', $login]
@@ -22,7 +22,7 @@ if (! password_verify($password, $userInfo['password'])) {
     die();
 }
 
-$_SESSION['username'] = $userInfo['name'];
+$_SESSION['id_user'] = $userInfo['id'];
 $_SESSION['login'] = $login;
 
 header('Location: /');

@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION['id_user'])) {
+    header('Location: /signin.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

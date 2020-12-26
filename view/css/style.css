@@ -12,6 +12,12 @@ html, body {
 
 header {
     background-color: #00C1DB;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 5px 20px;
 }
 
 body {

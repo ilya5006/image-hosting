@@ -2,7 +2,7 @@
 
 session_start();
 
-if (isset($_SESSION['id_user'])) {
+if (empty($_SESSION['id_user'])) {
     header('Location: /signin.php');
 }
 ?>
@@ -17,6 +17,7 @@ if (isset($_SESSION['id_user'])) {
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="/view/css/style.css">
+    <link rel="stylesheet" href="/view/css/header.css">
 
     <title>Фотоальбом</title>
 </head>

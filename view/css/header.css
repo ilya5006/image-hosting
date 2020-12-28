@@ -1,0 +1,40 @@
+header {
+    background-color: #00C1DB;
+
+    display: flex;
+}
+
+header a {
+    font-size: 20px;
+}
+
+header div {
+    display: flex;
+}
+
+header #logout {
+    padding: 20px;
+    background-color: #DE9797;
+
+    transition: all 1s ease-out;
+}
+
+header #logout:hover {
+    background-color: black;
+    color: #DE9797;
+}
+
+header div a {
+    background-color: #FFFFFF;
+    padding: 20px;
+
+    margin: 0px 5px;
+    
+    transition: all 1s ease-out;
+
+}
+
+header div a:hover {
+    background-color: black;
+    color: white;
+}

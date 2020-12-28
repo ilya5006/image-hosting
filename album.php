@@ -19,9 +19,13 @@ if (empty($_SESSION['id_user'])) {
     <link rel="stylesheet" href="/view/css/style.css">
     <link rel="stylesheet" href="/view/css/header.css">
 
+    <script src="/view/js/transition.js" defer></script>
+
     <title>Фотоальбом</title>
 </head>
 <body>
-
+    <?php
+        include __DIR__ . '/view/header.php';
+    ?>
 </body>
 </html>

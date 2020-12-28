@@ -17,7 +17,7 @@ $userInfo = \App\Database::select(
 )[0];
 
 if (! password_verify($password, $userInfo['password'])) {
-    header('Location: /signin?error=Неверный+логин+или+пароль');
+    header('Location: /signin.php?error=Неверный+логин+или+пароль');
     
     die();
 }

@@ -19,6 +19,8 @@ if (empty($_SESSION['id_user'])) {
     <link rel="stylesheet" href="/view/css/style.css">
     <link rel="stylesheet" href="/view/css/header.css">
 
+    <script src="/view/js/transition.js" defer></script>
+
     <title>Все альбомы</title>
 </head>
 <body>

@@ -1,10 +1,15 @@
 <header>
-
     <div>
-        <a href="/all-albums.php">Все альбомы</a>
-        <a href="/create-album.php">Создать коллекцию</a>
-
+        <?php
+        if ($_SERVER['REQUEST_URI'] != '/index.php' && $_SERVER['REQUEST_URI'] != '/'): 
+        ?>
+        <a class="transform" href="/">На главную</a>
+        <?php
+        endif
+        ?>
+        <a class="transform" href="/all-albums.php">Все альбомы</a>
+        <a class="transform" href="/create-album.php">Создать коллекцию</a>
     </div>
 
-    <a id="logout" href="/model/logout.php">Выйти</a>
+    <a class="transform" id="logout" href="/model/logout.php">Выйти</a>
 </header>

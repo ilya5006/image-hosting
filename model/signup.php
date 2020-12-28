@@ -6,13 +6,25 @@ require_once __DIR__ . '/Classes/Database.php';
 
 $login = $_POST['login'];
 $password = $_POST['password'];
-$username = $_POST['username'];
+
+$isUserExists = (bool)\App\Database::select(
+    'users', 
+    '*', 
+    "login = :login", 
+    [
+        [':login', $login]
+    ]
+);
+
+if ($isUserExists) {
+    header('Location: /signup.php?error=Такой+логин+уже+существует');
+    die();
+}
 
 \App\Database::insert(
     'users',
-    'null, :name, :login, :password', 
+    'null, :login, :password', 
     [
-        [':name', $username],
         [':login', $login],
         [':password', password_hash($password, PASSWORD_DEFAULT)]
     ]

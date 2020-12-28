@@ -36,7 +36,7 @@ class Database
         }
     }
 
-    public static function select(string $table, string $selector = '*', string $conditionTemplate = '', array $embeddedData)
+    public static function select(string $table, string $selector = '*', string $conditionTemplate = '', array $embeddedData = [])
     {
         static::connection();
 
@@ -54,7 +54,7 @@ class Database
         return $sth->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public static function insert(string $table, string $valuesTemplate, array $embeddedData)
+    public static function insert(string $table, string $valuesTemplate, array $embeddedData = [])
     {
         static::connection();
 
@@ -71,7 +71,7 @@ class Database
         return (int)$sth->errorCode === 0;
     }
 
-    public static function update(string $table, string $settersTemplate, string $conditionTemplate = '', array $embeddedData)
+    public static function update(string $table, string $settersTemplate, string $conditionTemplate = '', array $embeddedData = [])
     {
         static::connection();
 
@@ -89,7 +89,7 @@ class Database
         return (int)$sth->errorCode === 0;
     }
 
-    public static function delete(string $table, string $conditionTemplate = '', array $embeddedData)
+    public static function delete(string $table, string $conditionTemplate = '', array $embeddedData = [])
     {
         static::connection();
 

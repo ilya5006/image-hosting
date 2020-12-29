@@ -22,8 +22,18 @@ if (isset($_SESSION['id_user'])) {
     <title>Регистрация</title>
 </head>
 <body>
-    <?php
-        include __DIR__ . '/view/signup.php';
-    ?>
+    <form method="POST" action="/model/signup.php">
+        <p>Введите логин:</p>
+        <input type="text" name="login">
+        <p>Введите пароль:</p>
+        <input type="text" name="password">
+        <p>Повторите пароль:</p>
+        <input type="text" name="password-repeat">
+        <input type="submit" value="Зарегистрироваться">
+
+        <p>Уже имеется аккаунт?<a href="/signin.php">Войти</a></p>
+
+    </form>
+
 </body>
 </html>

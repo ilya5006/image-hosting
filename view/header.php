@@ -8,7 +8,7 @@
         endif
         ?>
         <a class="transform" href="/all-albums.php">Все альбомы</a>
-        <a class="transform" href="/create-album.php">Создать коллекцию</a>
+        <a class="transform" href="/create-album.php">Создать альбом</a>
     </div>
 
     <a class="transform" id="logout" href="/model/logout.php">Выйти</a>

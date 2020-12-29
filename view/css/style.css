@@ -4,11 +4,46 @@
     font-family: 'Merriweather', serif;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+}
+
 a {
     text-decoration: none;
     text-transform: uppercase;
 
     color: black;
+}
+
+p, h1, h2, h3, h4, h5, h6, a {
+    color: white;
+}
+
+.albums, .photos {
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+}
+
+.album, .photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 20px;
+
+    width: 200px;
+    height: 200px;
+}
+
+.album p, .photo p{
+    margin-top: 15px;
+
+    font-size: 25px;
+
+    word-wrap: break-word;
 }
 
 html, body {

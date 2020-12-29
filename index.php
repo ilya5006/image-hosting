@@ -17,8 +17,10 @@ if (empty($_SESSION['id_user'])) {
     
     <link rel="stylesheet" href="/view/css/style.css">
     <link rel="stylesheet" href="/view/css/header.css">
+    <link rel="stylesheet" href="/view/css/index.css">
 
     <script src="/view/js/transition.js" defer></script>
+    <script src="/view/js/times-of-day.js" defer></script>
 
     <title>Главная страница</title>
 </head>
@@ -27,8 +29,62 @@ if (empty($_SESSION['id_user'])) {
         include __DIR__ . '/view/header.php';
     ?>
 
-    <?php
-        include __DIR__ . '/view/index.php';
-    ?>
+    <h2><span id="times_of_day">Добрый вечер</span>, <?=$_SESSION['login']?></h2>
+
+    <div class="albums_wrapper">
+        <p>Последние просматриваемые фотоальбомы:</p>
+        
+        <div class="albums">
+            <a href="" class="album">
+                <img src="/images/test.png">
+                <p>Альбом 1</p>
+            </a>
+            <a href="" class="album">
+                <img src="/images/test.png">
+                <p>Альбом 1</p>
+            </a>
+            <a href="" class="album">
+                <img src="/images/test.png">
+                <p>Альбом 1</p>
+            </a>
+            <a href="" class="album">
+                <img src="/images/test.png">
+                <p>Альбом 1</p>
+            </a>
+            <a href="" class="album">
+                <img src="/images/test.png">
+                <p>Альбом 1</p>
+            </a>
+            <a href="" class="album">
+                <img src="/images/test.png">
+                <p>Альбом 1</p>
+            </a>
+            <a href="" class="album">
+                <img src="/images/test.png">
+                <p>Альбом 1</p>
+            </a>
+            <a href="" class="album">
+                <img src="/images/test.png">
+                <p>Альбом 1</p>
+            </a>
+            <a href="" class="album">
+                <img src="/images/test.png">
+                <p>Альбом 1</p>
+            </a>
+            <a href="" class="album">
+                <img src="/images/test.png">
+                <p>Альбом 1</p>
+            </a>
+            <a href="" class="album">
+                <img src="/images/test.png">
+                <p>Альбом 1</p>
+            </a>
+            <a href="" class="album">
+                <img src="/images/test.png">
+                <p>Альбом 1</p>
+            </a>
+        </a>
+    </div>
+
 </body>
 </html>

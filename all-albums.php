@@ -18,6 +18,7 @@ if (empty($_SESSION['id_user'])) {
     
     <link rel="stylesheet" href="/view/css/style.css">
     <link rel="stylesheet" href="/view/css/header.css">
+    <link rel="stylesheet" href="/view/css/all-albums.css">
 
     <script src="/view/js/transition.js" defer></script>
 
@@ -27,5 +28,78 @@ if (empty($_SESSION['id_user'])) {
     <?php
         include __DIR__ . '/view/header.php';
     ?>
+
+    <div class="all-albums">
+        <h2>Все альбомы</h2>
+        <input type="text" placeholder="Поиск альбома">
+    </div>
+
+    <div class="albums-wrapper">
+        <div class="album-wrapper">
+            <p>Альбом 1</p>
+
+            <div class="photos">
+                <a href="" class="photo">
+                    <img src="/images/test.png">
+                    <p>Фото 1</p>            
+                </a>
+                <a href="" class="photo">
+                    <img src="/images/test.png">
+                    <p>Фото 1</p>            
+                </a>
+                <a href="" class="photo">
+                    <img src="/images/test.png">
+                    <p>Фото 1</p>            
+                </a>
+                <a href="" class="photo">
+                    <img src="/images/test.png">
+                    <p>Фото 1</p>            
+                </a>
+                <a href="" class="photo">
+                    <img src="/images/test.png">
+                    <p>Фото 1</p>            
+                </a>
+                <a href="" class="photo">
+                    <img src="/images/test.png">
+                    <p>Фото 1</p>            
+                </a>
+            </div>
+
+            <a href="">Все фото</a>
+        </div>
+
+        <div class="album-wrapper">
+            <p>Альбом 2</p>
+
+            <div class="photos">
+                <a href="" class="photo">
+                    <img src="/images/test.png">
+                    <p>Фото 1</p>            
+                </a>
+                <a href="" class="photo">
+                    <img src="/images/test.png">
+                    <p>Фото 1</p>            
+                </a>
+                <a href="" class="photo">
+                    <img src="/images/test.png">
+                    <p>Фото 1</p>            
+                </a>
+                <a href="" class="photo">
+                    <img src="/images/test.png">
+                    <p>Фото 1</p>            
+                </a>
+                <a href="" class="photo">
+                    <img src="/images/test.png">
+                    <p>Фото 1</p>            
+                </a>
+                <a href="" class="photo">
+                    <img src="/images/test.png">
+                    <p>Фото 1</p>            
+                </a>
+            </div>
+
+            <a href="">Все фото</a>
+        </div>
+    </div>
 </body>
 </html>

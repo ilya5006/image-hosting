@@ -1,0 +1,41 @@
+.top {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+
+    width: 600px;
+
+    margin-top: 20px;
+}
+
+.album-title {
+    font-size: 30px;
+}
+
+.album-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.create, .delete {
+
+    font-size: 12px;
+}
+
+.album-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+
+    width: 1200px;
+}
+
+.photo {
+    margin-top: 20px;
+}
+
+.album-description {
+    margin-top: 40px;
+}

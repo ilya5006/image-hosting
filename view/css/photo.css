@@ -1,0 +1,45 @@
+.photo-wrapper {
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+
+    margin-top: 20px;
+
+    width: 800px;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+}
+
+.photo-name-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.photo-name-button p {
+    font-size: 40px;
+}
+
+.top > a {
+    text-transform: none;
+    font-size: 20px;
+
+    color: #C5C5C5;
+}
+
+.photo-wrapper img {
+    display: flex;
+    align-self: center;
+    margin-top: 20px;
+
+    width: 600px;
+}
+
+.bottom {
+    margin-top: 20px;
+}

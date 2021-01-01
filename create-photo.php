@@ -17,6 +17,7 @@ if (empty($_SESSION['id_user'])) {
     
     <link rel="stylesheet" href="/view/css/style.css">
     <link rel="stylesheet" href="/view/css/header.css">
+    <link rel="stylesheet" href="/view/css/create-photo.css">
 
     <script src="/view/js/transition.js" defer></script>
 
@@ -27,8 +28,17 @@ if (empty($_SESSION['id_user'])) {
         include __DIR__ . '/view/header.php';
     ?>
 
-    <?php
-        include __DIR__ . '/view/header.php';
-    ?>
+    <form method="POST" action="" enctype="multipart/form-data">
+        <p>Название фотографии:</p>
+        <input type="text" name="name">
+        <p>Описание фотографии:</p>
+        <textarea name="description"></textarea>
+        <div>
+            <label for="file">Загрузить фотографию:</label>
+            <input type="file" id="file" name="file">
+        </div>
+
+        <input type="submit" class="create" value="Создать">
+    </form>
 </body>
 </html>

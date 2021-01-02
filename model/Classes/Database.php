@@ -41,7 +41,7 @@ class Database
         static::connection();
 
         $query = 'SELECT ' . $selector . ' FROM ' . $table;
-        $query .= ($conditionTemplate != '') ? (' WHERE ' . $conditionTemplate) : '';
+        $query .= ($conditionTemplate != '') ? (' ' . $conditionTemplate) : '';
 
         $sth = static::$dbh->prepare($query);
 
@@ -76,7 +76,7 @@ class Database
         static::connection();
 
         $query = 'UPDATE ' . $table . ' SET ' . $settersTemplate;
-        $query .= ($conditionTemplate != '') ? (' WHERE ' . $conditionTemplate) : '';
+        $query .= ($conditionTemplate != '') ? (' ' . $conditionTemplate) : '';
 
         $sth = static::$dbh->prepare($query);
 
@@ -94,7 +94,7 @@ class Database
         static::connection();
 
         $query = 'DELETE FROM ' . $table;
-        $query .= ($conditionTemplate != '') ? (' WHERE ' . $conditionTemplate) : '';
+        $query .= ($conditionTemplate != '') ? (' ' . $conditionTemplate) : '';
 
         $sth = static::$dbh->prepare($query);
 

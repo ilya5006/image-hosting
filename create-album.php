@@ -28,7 +28,7 @@ if (empty($_SESSION['id_user'])) {
         include __DIR__ . '/view/header.php';
     ?>
 
-    <form method="POST" action="" enctype="multipart/form-data">
+    <form method="POST" action="/model/create-album.php">
         <p>Название фотоальбома:</p>
         <input type="text" name="name">
         <p>Описание фотоальбома:</p>

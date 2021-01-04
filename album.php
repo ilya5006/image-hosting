@@ -9,11 +9,14 @@ if (empty($_SESSION['id_user'])) {
 require_once __DIR__ . '/model/Classes/Database.php';
 require_once __DIR__ . '/model/Functions/get-album-photos.php';
 require_once __DIR__ . '/model/Functions/get-album-info.php';
+require_once __DIR__ . '/model/Functions/update-album-last-watch.php';
 
-$idAlbum = $_GET['id_album'];
+$idAlbum = (int) $_GET['id_album'];
 
-$albumPhotos = getAlbumPhotos(new \App\Database(), (int) $idAlbum);
-$albumInfo = getAlbumInfo(new \App\Database(), (int) $idAlbum);
+$albumPhotos = getAlbumPhotos(new \App\Database(), $idAlbum);
+$albumInfo = getAlbumInfo(new \App\Database(), $idAlbum);
+
+updateAlbumLastWatch(new \App\Database(), $idAlbum);
 
 ?>
 

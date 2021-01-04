@@ -8,10 +8,14 @@ if (empty($_SESSION['id_user'])) {
 
 require_once __DIR__ . '/model/Classes/Database.php';
 require_once __DIR__ . '/model/Functions/get-last-watched-albums.php';
+require_once __DIR__ . '/model/Functions/get-last-photo-in-album.php';
 
 $lastWatchedAlbums = getLastWatchedAlbums(new \App\Database(), (int) $_SESSION['id_user']);
 
-print_r($lastWatchedAlbums);
+for ($i = 0; $i < count($lastWatchedAlbums); $i++) {
+    $lastWatchedAlbums[$i]['last_photo'] = getLastPhotoInAlbum(new \App\Database(), (int) $lastWatchedAlbums[$i]['id']);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +50,7 @@ print_r($lastWatchedAlbums);
             foreach ($lastWatchedAlbums as $album):
             ?>
                 <a href="/album.php?id_album=<?=$album['id']?>" class="album">
-                    <img src="<?=$album['path']?>" class="preview">
+                    <img src="<?=$album['last_photo']['path'] ?: '/images/noimage.png'?>" class="preview">
                     <p><?=$album['name']?></p>
                 </a>
             <?php 

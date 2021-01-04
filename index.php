@@ -5,6 +5,13 @@ session_start();
 if (empty($_SESSION['id_user'])) {
     header('Location: /signin.php');
 }
+
+require_once __DIR__ . '/model/Classes/Database.php';
+require_once __DIR__ . '/model/Functions/get-last-watched-albums.php';
+
+$lastWatchedAlbums = getLastWatchedAlbums(new \App\Database(), (int) $_SESSION['id_user']);
+
+print_r($lastWatchedAlbums);
 ?>
 
 <!DOCTYPE html>
@@ -35,54 +42,16 @@ if (empty($_SESSION['id_user'])) {
         <p>Последние просматриваемые фотоальбомы:</p>
         
         <div class="albums">
-            <a href="" class="album">
-                <img src="/images/test.png">
-                <p>Альбом 1</p>
-            </a>
-            <a href="" class="album">
-                <img src="/images/test.png">
-                <p>Альбом 1</p>
-            </a>
-            <a href="" class="album">
-                <img src="/images/test.png">
-                <p>Альбом 1</p>
-            </a>
-            <a href="" class="album">
-                <img src="/images/test.png">
-                <p>Альбом 1</p>
-            </a>
-            <a href="" class="album">
-                <img src="/images/test.png">
-                <p>Альбом 1</p>
-            </a>
-            <a href="" class="album">
-                <img src="/images/test.png">
-                <p>Альбом 1</p>
-            </a>
-            <a href="" class="album">
-                <img src="/images/test.png">
-                <p>Альбом 1</p>
-            </a>
-            <a href="" class="album">
-                <img src="/images/test.png">
-                <p>Альбом 1</p>
-            </a>
-            <a href="" class="album">
-                <img src="/images/test.png">
-                <p>Альбом 1</p>
-            </a>
-            <a href="" class="album">
-                <img src="/images/test.png">
-                <p>Альбом 1</p>
-            </a>
-            <a href="" class="album">
-                <img src="/images/test.png">
-                <p>Альбом 1</p>
-            </a>
-            <a href="" class="album">
-                <img src="/images/test.png">
-                <p>Альбом 1</p>
-            </a>
+            <?php 
+            foreach ($lastWatchedAlbums as $album):
+            ?>
+                <a href="/album.php?id_album=<?=$album['id']?>" class="album">
+                    <img src="<?=$album['path']?>" class="preview">
+                    <p><?=$album['name']?></p>
+                </a>
+            <?php 
+            endforeach;
+            ?>
         </a>
     </div>
 

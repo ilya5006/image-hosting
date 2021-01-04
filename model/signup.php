@@ -21,16 +21,25 @@ if ($isUserExists) {
     die();
 }
 
+$idUser = (int)(\App\Database::select(
+    'users',
+    'id',
+    'ORDER BY id DESC '
+)[0]['id']) + 1;
+
 \App\Database::insert(
     'users',
-    'null, :login, :password', 
+    ':id_user, :login, :password', 
     [
+        [':id_user', $idUser],
         [':login', $login],
         [':password', password_hash($password, PASSWORD_DEFAULT)]
     ]
 );
 
-$_SESSION['username'] = $username;
+mkdir(__DIR__ . "/../images/$idUser");
+
+$_SESSION['id_user'] = $idUser;
 $_SESSION['login'] = $login;
 
 header('Location: /');

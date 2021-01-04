@@ -5,6 +5,12 @@ session_start();
 if (empty($_SESSION['id_user'])) {
     header('Location: /signin.php');
 }
+
+require_once __DIR__ . '/model/Classes/Database.php';
+require_once __DIR__ . '/model/Functions/get-photo-info.php';
+
+$photoInfo = getPhotoInfo(new \App\Database(),(int) $_GET['id_photo'])[0];
+
 ?>
 
 
@@ -32,17 +38,17 @@ if (empty($_SESSION['id_user'])) {
     <div class="photo-wrapper">
         <div class="top">
             <div class="photo-name-button">
-                <p class="photo-name">Фотография 1</p>
-                <a href="" class="delete">Удалить</a>
+                <p class="photo-name"><?=$photoInfo['name']?></p>
+                <a href="/model/delete-photo.php?id_photo=<?=$photoInfo['id']?>" class="delete">Удалить</a>
             </div>
-            <a href="" class="name-album">Альбом 1</a>
+            <a href="/album.php?id_album=<?=$photoInfo['id_album']?>" class="name-album"><?=$photoInfo['album_name']?></a>
         </div>
 
-        <img src="/images/test.png" alt="photo">
+        <img src="<?=$photoInfo['path']?>" alt="photo">
 
         <div class="bottom">
-            <p class="date">Дата создания: <span>01.01.2020</span></p>
-            <p class="description">Описание: <span>Обычная фотография</span></p>
+            <p class="date">Дата создания: <span><?=(new DateTime($photoInfo['date_creation']))->format('d.m.Y')?></span></p>
+            <p class="description">Описание: <span><?=$photoInfo['description']?></span></p>
         </div>
     </div>
 </body>

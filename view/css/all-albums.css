@@ -41,3 +41,7 @@
 
     width: 600px;
 }
+
+.album-wrapper p a {
+    text-transform: none;
+}

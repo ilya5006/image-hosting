@@ -5,8 +5,18 @@ session_start();
 if (empty($_SESSION['id_user'])) {
     header('Location: /signin.php');
 }
-?>
 
+require_once __DIR__ . '/model/Classes/Database.php';
+require_once __DIR__ . '/model/Functions/get-user-albums.php';
+require_once __DIR__ . '/model/Functions/get-album-photos.php';
+
+$albums = getUserAlbums(new \App\Database(), (int) $_SESSION['id_user']);
+
+for ($i = 0; $i < count($albums); $i++) {
+    $albums[$i]['photos'] = getAlbumPhotos(new \App\Database(), (int) $albums[$i]['id']);
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +45,39 @@ if (empty($_SESSION['id_user'])) {
     </div>
 
     <div class="albums-wrapper">
+        <?php 
+        foreach ($albums as $albumInfo):
+        ?>
+        
         <div class="album-wrapper">
+            <p><a href="/album.php?id_album=<?=$albumInfo['id']?>"><?=$albumInfo['name']?></a></p>
+
+            <div class="photos">
+                <?php
+                if (empty($albumInfo['photos'])):
+                ?>
+                <p class="empty">Фотографии отсутствуют</p>
+                <?php
+                endif;
+
+                foreach ($albumInfo['photos'] as $photoInfo):
+                ?>
+                <a href="/photo.php?id_photo=<?=$photoInfo['id']?>" class="photo">
+                    <img src="<?=$photoInfo['path']?>" class="preview">
+                    <p><?=$photoInfo['name']?></p>
+                </a>
+                <?php
+                endforeach;
+                ?>
+            </div>
+
+            <a href="/album.php?id_album=<?=$albumInfo['id']?>">Все фото</a>
+        </div>
+
+        <?php
+        endforeach;
+        ?>
+        <!-- <div class="album-wrapper">
             <p>Альбом 1</p>
 
             <div class="photos">
@@ -99,7 +141,7 @@ if (empty($_SESSION['id_user'])) {
             </div>
 
             <a href="">Все фото</a>
-        </div>
+        </div> -->
     </div>
 </body>
 </html>

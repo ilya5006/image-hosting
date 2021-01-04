@@ -44,10 +44,15 @@ p, h1, h2, h3, h4, h5, h6, a, label {
 
 .album p, .photo p{
     margin-top: 15px;
-
     font-size: 25px;
-
+    width: inherit;
+    text-align: center;
     word-wrap: break-word;
+}
+
+.preview {
+    width: 207px;
+    height: 170px;
 }
 
 textarea {
@@ -91,6 +96,11 @@ body {
     background-color: #00FF19;
 
     transition: all 1s ease-out;
+}
+
+.create:hover {
+    background-color: black;
+    color: #00FF19;
 }
 
 .delete {

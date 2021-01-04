@@ -5,6 +5,16 @@ session_start();
 if (empty($_SESSION['id_user'])) {
     header('Location: /signin.php');
 }
+
+require_once __DIR__ . '/model/Classes/Database.php';
+require_once __DIR__ . '/model/Functions/get-album-photos.php';
+require_once __DIR__ . '/model/Functions/get-album-info.php';
+
+$idAlbum = $_GET['id_album'];
+
+$albumPhotos = getAlbumPhotos(new \App\Database(), (int) $idAlbum);
+$albumInfo = getAlbumInfo(new \App\Database(), (int) $idAlbum);
+
 ?>
 
 
@@ -31,9 +41,9 @@ if (empty($_SESSION['id_user'])) {
 
     <div class="top">
         <div class="album-top">
-            <p class="album-title">Фотоальбом 1</p>
-            <a href="" class="create">Добавить фото</a>
-            <a href="" class="delete">Удалить альбом</a>
+            <p class="album-title"><?=$albumInfo['name']?></p>
+            <a href="/create-photo.php?id_album=<?= $idAlbum ?>" class="create">Добавить фото</a>
+            <a href="/model/delete-album.php?id_album=<?= $idAlbum ?>" class="delete">Удалить альбом</a>
         </div>
 
         <input class="search" type="text" placeholder="Поиск фотографии">
@@ -41,70 +51,20 @@ if (empty($_SESSION['id_user'])) {
 
     <div class="album-wrapper">
         <div class="photos">
-            <a href="/photo.php" class="photo">
-                <img src="/images/test.png">
-                <p>Фото 1</p>            
+            <?php 
+            foreach ($albumPhotos as $photo):
+            ?>
+            <a href="/photo.php?id_photo=<?=$photo['id']?>" class="photo">
+                <img src="<?=$photo['path']?>" class="preview">
+                <p><?=$photo['name']?></p>            
             </a>
-            <a href="/photo.php" class="photo">
-                <img src="/images/test.png">
-                <p>Фото 1</p>            
-            </a>
-            <a href="/photo.php" class="photo">
-                <img src="/images/test.png">
-                <p>Фото 1</p>            
-            </a>
-            <a href="/photo.php" class="photo">
-                <img src="/images/test.png">
-                <p>Фото 1</p>            
-            </a>
-            <a href="/photo.php" class="photo">
-                <img src="/images/test.png">
-                <p>Фото 1</p>            
-            </a>
-            <a href="/photo.php" class="photo">
-                <img src="/images/test.png">
-                <p>Фото 1</p>            
-            </a>
-            <a href="/photo.php" class="photo">
-                <img src="/images/test.png">
-                <p>Фото 1</p>            
-            </a>
-            <a href="/photo.php" class="photo">
-                <img src="/images/test.png">
-                <p>Фото 1</p>            
-            </a>
-            <a href="/photo.php" class="photo">
-                <img src="/images/test.png">
-                <p>Фото 1</p>            
-            </a>
-            <a href="/photo.php" class="photo">
-                <img src="/images/test.png">
-                <p>Фото 1</p>            
-            </a>
-            <a href="/photo.php" class="photo">
-                <img src="/images/test.png">
-                <p>Фото 1</p>            
-            </a>
-            <a href="/photo.php" class="photo">
-                <img src="/images/test.png">
-                <p>Фото 1</p>            
-            </a>
-            <a href="/photo.php" class="photo">
-                <img src="/images/test.png">
-                <p>Фото 1</p>            
-            </a>
-            <a href="/photo.php" class="photo">
-                <img src="/images/test.png">
-                <p>Фото 1</p>            
-            </a>
-            <a href="/photo.php" class="photo">
-                <img src="/images/test.png">
-                <p>Фото 1</p>            
-            </a>
-
+            <?php 
+            endforeach;
+            ?>
+    
         </div>
 
-        <p class="album-description">Описание альбома</p>
+        <p class="album-description"><?=$albumInfo['description']?></p>
     </div>
 </body>
 </html>

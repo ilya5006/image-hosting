@@ -5,16 +5,16 @@ session_start();
 
 $name = $_POST['name'];
 $description = $_POST['description'];
-$idUser = $_SESSION['id_user'];
+$idUser = (int)$_SESSION['id_user'];
 
 $idAlbum = (int)(\App\Database::select(
-    'album',
+    'albums',
     'id',
     'ORDER BY id DESC'
 )[0]['id']) + 1;
 
-$isInserted = \App\Database::insert(
-    'album',
+\App\Database::insert(
+    'albums',
     ":id_album, :id_user, :name, :description, NOW()",
     [
         [':id_album', $idAlbum],
@@ -24,8 +24,6 @@ $isInserted = \App\Database::insert(
     ]
 );
 
-if ($isInserted) {
-    header("Location: /album.php?id=$idAlbum");
-} else {
-    header('Location: /create-album.php?error=Произошла+ошибка.+Попробуйте+создать+альбом+заново');
-}
+mkdir(__DIR__ . "/../images/$idUser/$idAlbum");
+
+header("Location: /album.php?id_album=$idAlbum");

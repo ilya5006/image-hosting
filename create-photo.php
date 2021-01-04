@@ -28,16 +28,16 @@ if (empty($_SESSION['id_user'])) {
         include __DIR__ . '/view/header.php';
     ?>
 
-    <form method="POST" action="" enctype="multipart/form-data">
+    <form method="POST" action="/model/create-photo.php" enctype="multipart/form-data">
+        <input type="hidden" name="id_album" value="<?=$_GET['id_album']?>">
         <p>Название фотографии:</p>
         <input type="text" name="name">
         <p>Описание фотографии:</p>
         <textarea name="description"></textarea>
         <div>
             <label for="file">Загрузить фотографию:</label>
-            <input type="file" id="file" name="file">
+            <input type="file" id="file" name="file" accept="image/*">
         </div>
-
         <input type="submit" class="create" value="Создать">
     </form>
 </body>

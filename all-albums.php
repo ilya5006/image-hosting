@@ -13,7 +13,7 @@ require_once __DIR__ . '/model/Functions/get-album-photos.php';
 $albums = getUserAlbums(new \App\Database(), (int) $_SESSION['id_user']);
 
 for ($i = 0; $i < count($albums); $i++) {
-    $albums[$i]['photos'] = getAlbumPhotos(new \App\Database(), (int) $albums[$i]['id']);
+    $albums[$i]['photos'] = getAlbumPhotos(new \App\Database(), (int) $albums[$i]['id'], 10);
 }
 
 ?>

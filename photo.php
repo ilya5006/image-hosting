@@ -48,7 +48,7 @@ $photoInfo = getPhotoInfo(new \App\Database(),(int) $_GET['id_photo'])[0];
 
         <div class="bottom">
             <p class="date">Дата создания: <span><?=(new DateTime($photoInfo['date_creation']))->format('d.m.Y')?></span></p>
-            <p class="description">Описание: <span><?=$photoInfo['description']?></span></p>
+            <p class="photo-description">Описание: <span><?=$photoInfo['description']?></span></p>
         </div>
     </div>
 </body>

@@ -67,7 +67,7 @@ updateAlbumLastWatch(new \App\Database(), $idAlbum);
     
         </div>
 
-        <p class="album-description"><?=$albumInfo['description']?></p>
+        <p class="album-description description"><?=$albumInfo['description']?></p>
     </div>
 </body>
 </html>

@@ -17,6 +17,7 @@
 
 .album-wrapper {
     margin-top: 20px;
+    width: 1000px;
 }
 
 .album-wrapper > p {

@@ -24,6 +24,10 @@ p, h1, h2, h3, h4, h5, h6, a, label {
     color: white;
 }
 
+.description {
+    text-align: center;
+}
+
 .albums, .photos {
     display: flex;
     flex-wrap: wrap;
@@ -95,7 +99,7 @@ body {
     padding: 20px;
     background-color: #00FF19;
 
-    transition: all 1s ease-out;
+    transition: all 0.2s ease-out;
 }
 
 .create:hover {
@@ -107,7 +111,7 @@ body {
     padding: 20px;
     background-color: #DE9797;
 
-    transition: all 1s ease-out;
+    transition: all 0.2s ease-out;
 }
 
 .delete:hover {

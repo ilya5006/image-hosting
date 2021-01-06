@@ -26,6 +26,10 @@ label {
     margin-top: 20px;
 }
 
+input[type="file"] {
+    color: white;
+}
+
 input[type="submit"] {
     width: 200px;
     

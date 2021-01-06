@@ -46,3 +46,8 @@
 .album-wrapper p a {
     text-transform: none;
 }
+
+.empty {
+    margin-top: 20px;
+    font-size: 25px;
+}

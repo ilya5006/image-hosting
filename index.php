@@ -46,7 +46,13 @@ for ($i = 0; $i < count($lastWatchedAlbums); $i++) {
         <p>Последние просматриваемые фотоальбомы:</p>
         
         <div class="albums">
-            <?php 
+            <?php
+            if (empty($lastWatchedAlbums)):
+            ?>
+            <p class="does-not-exist">Вы не создали ни одного альбома</p>
+            <?php
+            endif;
+
             foreach ($lastWatchedAlbums as $album):
             ?>
                 <a href="/album.php?id_album=<?=$album['id']?>" class="album">

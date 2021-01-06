@@ -4,6 +4,17 @@ h2 {
     font-size: 45px;
 }
 
+.does-not-exist {
+    font-size: 50px;
+    margin-top: 50px;
+
+    color: red;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+}
+
 .albums_wrapper {
     display: flex;
     flex-direction: column;

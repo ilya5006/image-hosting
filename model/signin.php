@@ -10,7 +10,7 @@ $password = $_POST['password'];
 $userInfo = \App\Database::select(
     'users',
     'password, id',
-    'login = :login',
+    'WHERE login = :login',
     [
         [':login', $login]
     ]

@@ -6,6 +6,12 @@ require_once __DIR__ . '/Classes/Database.php';
 
 $login = $_POST['login'];
 $password = $_POST['password'];
+$passwordRepeat = $_POST['password-repeat'];
+
+if (! ($login && $password && $passwordRepeat)) {
+    header('Location: /signup.php?error=Все+поля+должны+быть+заполнены');
+    die();
+}
 
 $isUserExists = (bool)\App\Database::select(
     'users', 

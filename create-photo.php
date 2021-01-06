@@ -19,7 +19,7 @@ if (empty($_SESSION['id_user'])) {
     <link rel="stylesheet" href="/view/css/header.css">
     <link rel="stylesheet" href="/view/css/create-photo.css">
 
-    <script src="/view/js/transition.js" defer></script>
+    <script src="/view/js/error-handler.js" defer></script>
 
     <title>Загрузить фото</title>
 </head>

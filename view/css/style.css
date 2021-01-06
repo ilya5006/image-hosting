@@ -118,3 +118,47 @@ body {
     background-color: black;
     color: #DE9797;
 }
+
+.error {
+    position: absolute;
+
+    top: -1000px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background-color: black;
+
+    font-size: 40px;
+
+    border: 1px solid white;
+
+    padding: 20px;
+
+    color: white;
+
+    text-align: center;
+
+    animation: slidein 1s;
+    animation-fill-mode: forwards;
+}
+
+.slideout {
+    animation: slideout 1s;
+}
+
+@keyframes slidein {
+    from {
+        top: -200px;
+    } to {
+        top: 50px;
+    }
+}
+
+@keyframes slideout {
+    from {
+        top: 50px;
+    } to {
+        top: -1000px;
+    }
+}

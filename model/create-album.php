@@ -5,7 +5,12 @@ session_start();
 
 $name = $_POST['name'];
 $description = $_POST['description'];
-$idUser = (int)$_SESSION['id_user'];
+$idUser = (int) $_SESSION['id_user'];
+
+if (! ($name && $description)) {
+    header('Location: /create-album.php?error=Заполните+все+поля');
+    die();
+}
 
 $idAlbum = (int)(\App\Database::select(
     'albums',

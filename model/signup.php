@@ -13,17 +13,22 @@ if (! ($login && $password && $passwordRepeat)) {
     die();
 }
 
+if ($password !== $passwordRepeat) {
+    header('Location: /signup.php?error=Пароли+должны+совпадать');
+    die();
+}
+
 $isUserExists = (bool)\App\Database::select(
     'users', 
     '*', 
-    "login = :login", 
+    "WHERE login = :login", 
     [
         [':login', $login]
     ]
 );
 
 if ($isUserExists) {
-    header('Location: /signup.php?error=Такой+логин+уже+существует');
+    header('Location: /signup.php?error=Такой+пользователь+уже+существует');
     die();
 }
 
@@ -43,7 +48,7 @@ $idUser = (int)(\App\Database::select(
     ]
 );
 
-mkdir(__DIR__ . "/../images/$idUser");
+@mkdir(__DIR__ . "/../images/$idUser");
 
 $_SESSION['id_user'] = $idUser;
 $_SESSION['login'] = $login;

@@ -33,7 +33,10 @@ updateAlbumLastWatch(new \App\Database(), $idAlbum);
     <link rel="stylesheet" href="/view/css/header.css">
     <link rel="stylesheet" href="/view/css/album.css">
 
-    <script src="/view/js/transition.js" defer></script>
+    <script src="/view/js/functions/get-matched-content.js" defer></script>
+    <script src="/view/js/functions/search.js" defer></script>
+
+    <script src="/view/js/album.js" defer></script>
 
     <title>Фотоальбом</title>
 </head>

@@ -30,7 +30,10 @@ for ($i = 0; $i < count($albums); $i++) {
     <link rel="stylesheet" href="/view/css/header.css">
     <link rel="stylesheet" href="/view/css/all-albums.css">
 
-    <script src="/view/js/transition.js" defer></script>
+    <script src="/view/js/functions/get-matched-content.js" defer></script>
+    <script src="/view/js/functions/search.js" defer></script>
+
+    <script src="/view/js/all-albums.js" defer></script>
 
     <title>Все альбомы</title>
 </head>
@@ -41,7 +44,7 @@ for ($i = 0; $i < count($albums); $i++) {
 
     <div class="all-albums">
         <h2>Все альбомы</h2>
-        <input type="text" placeholder="Поиск альбома">
+        <input type="text" class="search" placeholder="Поиск альбома">
     </div>
 
     <div class="albums-wrapper">

@@ -19,5 +19,3 @@ deleteTree(__DIR__ . "/../images/$idUser/$idAlbum");
 );
 
 header('Location: /all-albums.php');
-
-?>

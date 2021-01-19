@@ -24,6 +24,17 @@ p, h1, h2, h3, h4, h5, h6, a, label {
     color: white;
 }
 
+.no-albums {
+    font-size: 50px;
+    margin-top: 50px;
+
+    color: red;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+}
+
 .description {
     text-align: center;
 }

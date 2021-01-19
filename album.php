@@ -58,6 +58,12 @@ updateAlbumLastWatch(new \App\Database(), $idAlbum);
     <div class="album-wrapper">
         <div class="photos">
             <?php 
+            if (empty($albumPhotos)):
+            ?>
+            <p class="no-images">Фотографии отсутствуют</p>
+            <?php
+            endif;
+
             foreach ($albumPhotos as $photo):
             ?>
             <a href="/photo.php?id_photo=<?=$photo['id']?>" class="photo">

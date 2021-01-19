@@ -48,10 +48,15 @@ for ($i = 0; $i < count($albums); $i++) {
     </div>
 
     <div class="albums-wrapper">
+        <?php
+        if (empty($albums)):
+        ?>
+        <p class="no-albums">Альбомы отсутствуют</p>
         <?php 
+        endif;
+        
         foreach ($albums as $albumInfo):
         ?>
-        
         <div class="album-wrapper">
             <p><a href="/album.php?id_album=<?=$albumInfo['id']?>"><?=$albumInfo['name']?></a></p>
 

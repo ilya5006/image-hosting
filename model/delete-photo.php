@@ -4,14 +4,17 @@ require_once __DIR__ . '/Classes/Database.php';
 
 $idPhoto = (int) $_GET['id_photo'];
 
-$photoPath = \App\Database::select(
+$photoPathAndIdAlbum = \App\Database::select(
     'photos',
-    'path',
+    'path, id_album',
     'WHERE id = :id_photo',
     [
         [':id_photo', $idPhoto]
     ]
-)[0]['path'];
+)[0];
+
+$photoPath = $photoPathAndIdAlbum['path'];
+$idAlbum = $photoPathAndIdAlbum['id_album'];
 
 unlink(__DIR__ . '/..' . $photoPath);
 
@@ -22,3 +25,5 @@ unlink(__DIR__ . '/..' . $photoPath);
         [':id_photo', $idPhoto]
     ]
 );
+
+header("Location: /album.php?id_album=$idAlbum");
